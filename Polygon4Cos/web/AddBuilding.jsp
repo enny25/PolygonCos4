@@ -1,5 +1,5 @@
 <%-- 
-    Document   : AddPlayer
+    Document   : AddBuilding
     Created on : Feb 25, 2016, 10:06:21 AM
     Author     : 
 --%>
@@ -15,11 +15,11 @@
         <h1>Add Building</h1>
         <form action="Servlet">
             <input type="hidden" name="action" value="addBuilding" />
-            Building Name:<input type="text" name="name" value="" /><br>
-            Building Address:<input type="text" name="address" value="" /><br>
-            Customer ID:<input type="text" name="buildingID" value="" /><br>
-            Building Size:<input type="text" name="size" value="" /><br>
-            <input type="submit" name="Submit" value="Submit" /><br>
+            <br>Building Name:<input type="text" name="name" value="" /><br>
+            <br>Building Address:<input type="text" name="address" value="" /><br>
+            <br>Customer ID:<input type="text" name="customerID" value="" /><br>
+            <br>Building Size:<input type="text" name="size" value="" /><br>
+            <br><input type="submit" name="Submit" value="Submit" /><br>
         </form>
         
         <!--<h1>Add Match</h1>

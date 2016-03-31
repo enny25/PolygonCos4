@@ -15,10 +15,9 @@ public class Customer {
     private int customerId;
     private String signupDate;
 
-    public Customer(String name, String address, int customerId, String signupDate) {
+    public Customer(String name, String address, String signupDate) {
         this.name = name;
         this.address = address;
-        this.customerId = customerId;
         this.signupDate = signupDate;
     }
 

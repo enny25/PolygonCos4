@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package dataSource;
-
+import domain.Customer;
 import domain.Building;
 import java.sql.Connection;
 import java.util.List;
@@ -34,9 +34,14 @@ public class DBFacade {
     }
     // Singleton end
 
-    public boolean createBuilding(Building p) {
+    public boolean createBuilding(Building b) {
 
-        return map.createBuilding(p, con);
+        return map.createBuilding(b, con);
+    }
+
+    public boolean createCustomer(Customer c) {
+
+        return map.createCustomer(c, con);
     }
 
 //    public List<Building> showBuildings() {

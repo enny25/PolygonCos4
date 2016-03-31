@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package presentation;
-
+import domain.Customer;
 import domain.DomainFacade;
 import domain.Building;
 import java.io.IOException;
@@ -16,6 +16,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -35,14 +36,25 @@ public class Servlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        HttpSession session = request.getSession();
+         DomainFacade domainModel = (DomainFacade) session.getAttribute("Controller");
+        if (domainModel == null) {
+            //New session starts
+            domainModel = DomainFacade.getInstance();
+            session.setAttribute("Controller", domainModel);
+        }
+        else {
+            domainModel = (DomainFacade) session.getAttribute("Controller");
+        }
         response.setContentType("text/html;charset=UTF-8");
         DomainFacade df = DomainFacade.getInstance();
+        
         String create = request.getParameter("create");
         try (PrintWriter out = response.getWriter()) {
             switch (create) {
 
                 case "addBuilding":
-                    newBuilding(request, response, df);
+                    newBuilding(request, response, domainModel);
                     break;
 
             }
@@ -59,6 +71,17 @@ public class Servlet extends HttpServlet {
         Building building = df.createBuilding(name, address, customerID, size);
 
         request.setAttribute("building", building);
+    }
+    
+       private void newCustomer(HttpServletRequest request, HttpServletResponse response, DomainFacade df) {
+        String name = request.getParameter("name");
+        String address = request.getParameter("address");
+        int signupDate = Integer.parseInt(request.getParameter("sign-upDate"));
+        
+
+        Customer customer = df.createCustomer(name, address, signupDate);
+
+        request.setAttribute("customer", customer);
     }
 
 //    private void showBuildings(HttpServletRequest request, HttpServletResponse response, DomainFacade df) throws ServletException, IOException {

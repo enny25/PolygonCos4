@@ -10,6 +10,7 @@ import java.util.List;
 
 public class DomainFacade {
 
+    private Customer newCustomer;
     private Building newBuilding;
     private DBFacade dbf;
 
@@ -32,6 +33,17 @@ public class DomainFacade {
         }
 
         return newBuilding;
+    }
+
+    public Customer createCustomer(String name, String address, String signupDate) {
+        newCustomer = new Customer(name, address, signupDate);
+
+        boolean status = dbf.createCustomer(newCustomer);
+        if (!status) {
+            newCustomer = null;
+        }
+
+        return newCustomer;
     }
 
 //     public List<Building> showBuildings(){

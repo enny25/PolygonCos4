@@ -36,13 +36,30 @@ public class Mapper {
             statement.setDouble(4, b.getSize());
             rowsInserted = statement.executeUpdate();
    
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (SQLException e) {
+            System.out.println("Exception = "+ e);
 
         }
         return rowsInserted == 1;
     }
     
+    public boolean createCustomer(Customer c, Connection con) {
+        int rowsInserted = 0;
+        String sql = "insert into customer (name, address, signupDate) values (?,?,?)";
+        try (PreparedStatement statement
+                = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+            //== insert tuple
+            statement.setString(1, c.getName());
+            statement.setString(2, c.getAddress());
+            statement.setString(3, c.getSignupDate());
+            rowsInserted = statement.executeUpdate();
+   
+        } catch (SQLException e) {
+            System.out.println("Exception = "+ e);
+
+        }
+        return rowsInserted == 1;
+    }
 //     List<Building> showBuildings(Connection con) {
 //        return showBuildings(con);
 //    }
