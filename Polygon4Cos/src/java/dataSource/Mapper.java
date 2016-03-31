@@ -7,6 +7,7 @@ package dataSource;
 
 
 import domain.Building;
+import domain.Customer;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -25,13 +26,13 @@ public class Mapper {
 
     public boolean createBuilding(Building b, Connection con) {
         int rowsInserted = 0;
-        String sql = "INSERT INTO building (Player_name, Player_position, Player_number, Team_id) VALUES(?,?,?,?)";
+        String sql = "insert into building (buildingName, address, customerId, size) values (?,?,?,?)";
         try (PreparedStatement statement
                 = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             //== insert tuple
             statement.setString(1, b.getName());
             statement.setString(2, b.getAddress());
-            statement.setInt(3, b.getBuildingID());
+            statement.setInt(3, b.getCustomerID());
             statement.setDouble(4, b.getSize());
             rowsInserted = statement.executeUpdate();
    
@@ -41,6 +42,32 @@ public class Mapper {
         }
         return rowsInserted == 1;
     }
+    
+//     List<Building> showBuildings(Connection con) {
+//        return showBuildings(con);
+//    }
+//    private List<Building> showBuildings2(Connection con) {
+//        ArrayList<Building> players = new ArrayList<Building>();
+//        String SQLString = "select * from building";
+//               
+//        try (PreparedStatement statement = con.prepareStatement(SQLString)) {
+//            ResultSet rs = statement.executeQuery();
+//            while (rs.next()) {
+//                    Customer customer = new Customer(rs.getInt("Customer_id"));
+//                    Building building = new Building(
+//                    rs.getString("Building_name"),
+//                    rs.getString("Building_address"),
+//                    rs.getInt("Building_buildingID"), customer);
+//                    players.add(building);
+//                }
+//            
+//            return players;
+//        } catch (Exception e) {
+//            System.out.println("Fail1 in OrderMapper - getOrder");
+//            System.out.println(e.getMessage());
+//            return null;
+//        }
+//    }
     /*public boolean createGoal(Goal g, Connection con) {
         int rowsInserted = 0;
         String sql = "INSERT INTO goal (Player_id, Match_id) VALUES((SELECT Player_id FROM player WHERE Player_name = ?),?)";
@@ -80,7 +107,7 @@ public class Mapper {
     }
         private List<Building> showPlayers(Connection con) {
         ArrayList<Building> players = new ArrayList<Building>();
-        String SQLString = "select * from player";
+        String SQLString = "select * from building";
                
         try (PreparedStatement statement = con.prepareStatement(SQLString)) {
             ResultSet rs = statement.executeQuery();

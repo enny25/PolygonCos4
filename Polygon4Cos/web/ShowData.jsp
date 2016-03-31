@@ -39,5 +39,27 @@
             </tr>
             <%} //end of for loop%>
         </table>
+        <h2>Customers</h2>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Customer ID</th>
+                <th>Sign-up date</th>
+            </tr>
+             <%
+                List<Customer> customers = (List<Customer>) request.getAttribute("customers");
+
+                for (int i = 0; i < customers.size(); i++) {
+
+
+            %>
+            <tr>
+                <td><%= customers.get(i).getName()%><td>
+                <td><%= customers.get(i).getAddress()%></td>
+                <td><%= customers.get(i).getCustomerId()%></td>
+                <td><%=customers.get(i).getSignupDate()%></td>
+            </tr>
+        </table>
     </body>
 </html>

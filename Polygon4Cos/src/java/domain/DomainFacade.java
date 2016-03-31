@@ -34,8 +34,8 @@ public class DomainFacade {
         return newBuilding;
     }
 
-     public List<Building> showBuildings(){
-        List <Building> allBuildings = dbf.showBuildings();
-        return allBuildings;
-}
+//     public List<Building> showBuildings(){
+//        List <Building> allBuildings = dbf.showBuildings();
+//        return allBuildings;
+//}
 }

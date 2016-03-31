@@ -61,13 +61,13 @@ public class Servlet extends HttpServlet {
         request.setAttribute("building", building);
     }
 
-    private void showBuildings(HttpServletRequest request, HttpServletResponse response, DomainFacade df) throws ServletException, IOException {
-        List<Building> buildings = df.showBuildings();
-        request.setAttribute("buildings", buildings);
-
-        RequestDispatcher dispatcher = request.getRequestDispatcher("ShowData.jsp");
-        dispatcher.forward(request, response);
-    }
+//    private void showBuildings(HttpServletRequest request, HttpServletResponse response, DomainFacade df) throws ServletException, IOException {
+//        List<Building> buildings = df.showBuildings();
+//        request.setAttribute("buildings", buildings);
+//
+//        RequestDispatcher dispatcher = request.getRequestDispatcher("ShowData.jsp");
+//        dispatcher.forward(request, response);
+//    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

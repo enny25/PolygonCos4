@@ -39,9 +39,9 @@ public class DBFacade {
         return map.createBuilding(p, con);
     }
 
-    public List<Building> showBuildings() {
-        return map.showBuildings(con);
-    }
+//    public List<Building> showBuildings() {
+//        return map.showBuildings(con);
+//    }
 //
 //    public boolean createGoal(Goal g) {
 //
