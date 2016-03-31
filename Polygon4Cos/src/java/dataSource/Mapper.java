@@ -26,13 +26,13 @@ public class Mapper {
 
     public boolean createBuilding(Building b, Connection con) {
         int rowsInserted = 0;
-        String sql = "insert into building (buildingName, address, customerId, size) values (?,?,?,?)";
+        String sql = "insert into building (buildingName, customerId, address, size) values (?,?,?,?)";
         try (PreparedStatement statement
                 = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             //== insert tuple
             statement.setString(1, b.getName());
-            statement.setString(2, b.getAddress());
-            statement.setInt(3, b.getCustomerID());
+            statement.setInt(2, b.getCustomerID());
+            statement.setString(3, b.getAddress());            
             statement.setDouble(4, b.getSize());
             rowsInserted = statement.executeUpdate();
    
@@ -42,6 +42,7 @@ public class Mapper {
         }
         return rowsInserted == 1;
     }
+    
     
 //     List<Building> showBuildings(Connection con) {
 //        return showBuildings(con);
