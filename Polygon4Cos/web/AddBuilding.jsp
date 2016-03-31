@@ -15,10 +15,10 @@
         <h1>Add Building</h1>
         <form action="Servlet">
             <input type="hidden" name="action" value="addBuilding" />
-            Player Name:<input type="text" name="name" value="" /><br>
-            Player Address:<input type="text" name="address" value="" /><br>
-            Player Building ID:<input type="text" name="buildingID" value="" /><br>
-            Player Size:<input type="text" name="size" value="" /><br>
+            Building Name:<input type="text" name="name" value="" /><br>
+            Building Address:<input type="text" name="address" value="" /><br>
+            Customer ID:<input type="text" name="buildingID" value="" /><br>
+            Building Size:<input type="text" name="size" value="" /><br>
             <input type="submit" name="Submit" value="Submit" /><br>
         </form>
         

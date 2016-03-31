@@ -53,10 +53,10 @@ public class Servlet extends HttpServlet {
     private void newBuilding(HttpServletRequest request, HttpServletResponse response, DomainFacade df) {
         String name = request.getParameter("name");
         String address = request.getParameter("address");
-        int buildingID = Integer.parseInt(request.getParameter("buildingID"));
+        int customerID = Integer.parseInt(request.getParameter("customerID"));
         double size = Double.parseDouble(request.getParameter("size"));
 
-        Building building = df.createBuilding(name, address, buildingID, size);
+        Building building = df.createBuilding(name, address, customerID, size);
 
         request.setAttribute("building", building);
     }

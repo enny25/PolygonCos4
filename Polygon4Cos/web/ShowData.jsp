@@ -35,6 +35,7 @@
                 <td><%= buildings.get(i).getName()%><td>
                 <td><%= buildings.get(i).getAddress()%></td>
                 <td><%= buildings.get(i).getBuildingID()%></td>
+                <td><%= buildings.get(i).getCustomerID()%></td>
                 <td><%=buildings.get(i).getSize()%></td>
             </tr>
             <%} //end of for loop%>

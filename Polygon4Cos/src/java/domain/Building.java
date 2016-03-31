@@ -17,17 +17,13 @@ public class Building {
     private int customerID;
     private double size;
 
-    public Building(String name, String address, int buildingID, int customerID, double size) {
+    public Building(String name, String address, int customerID, double size) {
         this.name = name;
         this.address = address;
-        this.buildingID = buildingID;
         this.customerID = customerID;
         this.size = size;
     }
 
-    Building(String name, String address, int buildingID, double size) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
     public int getCustomerID() {
         return customerID;

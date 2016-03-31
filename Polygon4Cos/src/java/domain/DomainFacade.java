@@ -23,8 +23,8 @@ public class DomainFacade {
     }
     //----------------------
 
-    public Building createBuilding(String name, String address, int buildingID, double size) {
-        newBuilding = new Building(name, address, buildingID, size);
+    public Building createBuilding(String name, String address, int customerID, double size) {
+        newBuilding = new Building(name, address, customerID, size);
 
         boolean status = dbf.createBuilding(newBuilding);
         if (!status) {
