@@ -5,10 +5,8 @@
  */
 package dataSource;
 
-import domain.Goal;
-import domain.Match;
+
 import domain.Building;
-import domain.Team;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
