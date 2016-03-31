@@ -6,9 +6,6 @@
 package presentation;
 
 import domain.DomainFacade;
-import domain.Goal;
-import domain.Match;
-import domain.Team;
 import domain.Building;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -40,65 +37,33 @@ public class Servlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         DomainFacade df = DomainFacade.getInstance();
-        String action = request.getParameter("action");
+        String create = request.getParameter("create");
         try (PrintWriter out = response.getWriter()) {
-            switch (action){
-            
-                case "addPlayer":
+            switch (create) {
+
+                case "addBuilding":
                     newBuilding(request, response, df);
                     break;
-                case "addGoal":
-                    newGoal(request, response, df);
-                    break;
-                case "addMatch":
-                    newMatch(request, response, df);
-                    break;
-                case "showPlayers":
-                    showPlayers(request, response, df);
-                    break;
-                case "deleteGoal":
-                    deleteGoal(request, response, df);
-                    break;
-            }
-            
 
+            }
 
         }
     }
-    
-    private void newBuilding(HttpServletRequest request, HttpServletResponse response, DomainFacade df){
+
+    private void newBuilding(HttpServletRequest request, HttpServletResponse response, DomainFacade df) {
         String name = request.getParameter("name");
-        String position = request.getParameter("position");
-        int number = Integer.parseInt(request.getParameter("number"));
-        String teamName = request.getParameter("team");
+        String address = request.getParameter("address");
+        int buildingID = Integer.parseInt(request.getParameter("buildingID"));
+        double size = Double.parseDouble(request.getParameter("size"));
 
-        Team team = new Team(teamName);
-        Building player = df.createBuilding(name, position, number, team);
-        
-        request.setAttribute("player", player);
-    }
-    
-    private void newGoal(HttpServletRequest request, HttpServletResponse response, DomainFacade df){
-        String pname = request.getParameter("pname");
-        int match_id = Integer.parseInt(request.getParameter("match_id"));
-        Goal goal = df.createGoal(pname, match_id);
-   
-        request.setAttribute("goal", goal);
-    }
-    
-    private void newMatch(HttpServletRequest request, HttpServletResponse response, DomainFacade df){
-        String team1Name = request.getParameter("team1");
-        String team2Name = request.getParameter("team2");
+        Building building = df.createBuilding(name, address, buildingID, size);
 
-        Match match = df.createMatch(team1Name, team2Name);
-   
-        request.setAttribute("match", match);
+        request.setAttribute("building", building);
     }
-    
-    private void showPlayers(HttpServletRequest request, HttpServletResponse response, DomainFacade df) throws ServletException, IOException 
-    {
-	List<Building> players = df.showBuildings();
-	request.setAttribute("players", players);
+
+    private void showBuildings(HttpServletRequest request, HttpServletResponse response, DomainFacade df) throws ServletException, IOException {
+        List<Building> buildings = df.showBuildings();
+        request.setAttribute("buildings", buildings);
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("ShowData.jsp");
         dispatcher.forward(request, response);
@@ -142,18 +107,5 @@ public class Servlet extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
-    private void deleteGoal(HttpServletRequest request, HttpServletResponse response, DomainFacade df) throws ServletException, IOException {
-
-        String playerName = request.getParameter("playerName");
-        int match_id = Integer.parseInt(request.getParameter("match_id"));
-
-       Goal g = df.deleteGoal(playerName, match_id);
-       
-        // show output        
-        request.setAttribute("goal", g);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("DeleteGoal.jsp");
-        dispatcher.forward(request, response);
-    }
 
 }
