@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package presentation;
+
 import domain.Customer;
 import domain.DomainFacade;
 import domain.Building;
@@ -37,25 +38,20 @@ public class Servlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession();
-         DomainFacade domainModel = (DomainFacade) session.getAttribute("Controller");
-        if (domainModel == null) {
-            //New session starts
-            domainModel = DomainFacade.getInstance();
-            session.setAttribute("Controller", domainModel);
-        }
-        else {
-            domainModel = (DomainFacade) session.getAttribute("Controller");
-        }
+
         response.setContentType("text/html;charset=UTF-8");
         DomainFacade df = DomainFacade.getInstance();
-        
-        String create = request.getParameter("create");
+
+        String action = request.getParameter("action");
         try (PrintWriter out = response.getWriter()) {
-            switch (create) {
+            switch (action) {
 
                 case "addBuilding":
-                    newBuilding(request, response, domainModel);
+                    newBuilding(request, response, df);
+                    break;
+
+                case "createCustomer":
+                    newCustomer(request, response, df);
                     break;
 
             }
@@ -73,12 +69,11 @@ public class Servlet extends HttpServlet {
 
         request.setAttribute("building", building);
     }
-    
-       private void newCustomer(HttpServletRequest request, HttpServletResponse response, DomainFacade df) {
+
+    private void newCustomer(HttpServletRequest request, HttpServletResponse response, DomainFacade df) {
         String name = request.getParameter("name");
         String address = request.getParameter("address");
         Date signupDate = Date.valueOf(request.getParameter("sign-upDate"));
-        
 
         Customer customer = df.createCustomer(name, address, signupDate);
 
@@ -92,7 +87,6 @@ public class Servlet extends HttpServlet {
 //        RequestDispatcher dispatcher = request.getRequestDispatcher("ShowData.jsp");
 //        dispatcher.forward(request, response);
 //    }
-
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
