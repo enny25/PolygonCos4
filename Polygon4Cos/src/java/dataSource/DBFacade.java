@@ -5,8 +5,7 @@
  */
 package dataSource;
 
-import domain.Goal;
-import domain.Match;
+
 import domain.Building;
 import java.sql.Connection;
 import java.util.List;
@@ -34,12 +33,12 @@ public class DBFacade {
 	  }
 	  // Singleton end
 
-	  public boolean createPlayer(Building p){
+	  public boolean createBuilding(Building p){
 
-              return map.createPlayer(p, con);
+              return map.createBuilding(p, con);
           }
           
-          public boolean createGoal(Goal g){
+         /* public boolean createGoal(Goal g){
 
               return map.createGoal(g, con);
           }
@@ -48,7 +47,7 @@ public class DBFacade {
               return map.createMatch(match, con);
           }
            
-           public List<Building> showPlayers() 
+           public List<Building> showBuilding() 
 	  {
 		  return map.showPlayers2(con);	      
 	  }
@@ -56,7 +55,7 @@ public class DBFacade {
           public boolean deleteGoal(Goal g)
 	  { 
 	    return map.deleteGoal(g, con);
-	  }
+	  }*/
 
 	
 }

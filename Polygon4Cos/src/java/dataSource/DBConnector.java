@@ -15,7 +15,7 @@ import java.sql.DriverManager;
 public class DBConnector {
     
   private static String driver = "com.mysql.jdbc.Driver";
-    private static String URL = "jdbc:mysql://localhost/Soccer";
+    private static String URL = "jdbc:mysql://localhost/polygon";
     private static String id = "root";			
     private static String pw = "test";
     

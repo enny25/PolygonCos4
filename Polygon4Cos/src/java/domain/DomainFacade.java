@@ -32,7 +32,7 @@ public class DomainFacade {
     {
         newBuilding = new Building(name, address, buildingID, size);
 
-        boolean status = dbf.createPlayer(newBuilding);
+        boolean status = dbf.createBuilding(newBuilding);
         if (!status)
         {
             newBuilding = null;
@@ -46,10 +46,10 @@ public class DomainFacade {
      
     
      
-     public List<Building> showBuildings(){
-        List <Building> allBuildings = dbf.showPlayers();
+    /* public List<Building> showBuildings(){
+        List <Building> allBuildings = dbf.showBuilding();
         return allBuildings;
-    }
+    }*/
      
          
 }

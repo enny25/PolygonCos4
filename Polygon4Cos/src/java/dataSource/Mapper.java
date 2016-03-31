@@ -5,10 +5,8 @@
  */
 package dataSource;
 
-import domain.Goal;
-import domain.Match;
+
 import domain.Building;
-import domain.Team;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -25,16 +23,16 @@ import java.util.logging.Logger;
  */
 public class Mapper {
 
-    public boolean createPlayer(Building p, Connection con) {
+    public boolean createBuilding(Building b, Connection con) {
         int rowsInserted = 0;
-        String sql = "INSERT INTO player (Player_name, Player_position, Player_number, Team_id) VALUES(?,?,?,?)";
+        String sql = "INSERT INTO building (Player_name, Player_position, Player_number, Team_id) VALUES(?,?,?,?)";
         try (PreparedStatement statement
                 = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             //== insert tuple
-            statement.setString(1, p.getName());
-            statement.setString(2, p.getPosition());
-            statement.setInt(3, p.getNumber());
-            statement.setString(4, p.getTeam().getTeamName());
+            statement.setString(1, b.getName());
+            statement.setString(2, b.getAddress());
+            statement.setInt(3, b.getBuildingID());
+            statement.setDouble(4, b.getSize());
             rowsInserted = statement.executeUpdate();
    
         } catch (Exception e) {
@@ -43,7 +41,7 @@ public class Mapper {
         }
         return rowsInserted == 1;
     }
-    public boolean createGoal(Goal g, Connection con) {
+    /*public boolean createGoal(Goal g, Connection con) {
         int rowsInserted = 0;
         String sql = "INSERT INTO goal (Player_id, Match_id) VALUES((SELECT Player_id FROM player WHERE Player_name = ?),?)";
         try (PreparedStatement statement
@@ -148,5 +146,5 @@ public class Mapper {
         return rowsUpdated == 1;
     }
     
-    
+    */
 }

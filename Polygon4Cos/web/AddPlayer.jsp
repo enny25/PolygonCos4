@@ -16,13 +16,13 @@
         <form action="Servlet">
             <input type="hidden" name="action" value="addBuilding" />
             Player Name:<input type="text" name="name" value="" /><br>
-            Player Position:<input type="text" name="position" value="" /><br>
-            Player Number:<input type="text" name="number" value="" /><br>
-            Player Team:<input type="text" name="team" value="" /><br>
+            Player Address:<input type="text" name="address" value="" /><br>
+            Player BuildingID:<input type="text" name="buildingID" value="" /><br>
+            Player Size:<input type="text" name="size" value="" /><br>
             <input type="submit" name="Submit" value="Submit" /><br>
         </form>
         
-        <h1>Add Match</h1>
+        <!--<h1>Add Match</h1>
         <form action="Servlet">
             <input type="hidden" name="action" value="addMatch" />
             Team 1 Name:<input type="text" name="team1" value="" /><br>
@@ -36,7 +36,7 @@
             Player Name:<input type="text" name="pname" value="" /><br>
             Match id:<input type="text" name="match_id" value="" /><br>
             <input type="submit" name="Submit" value="Submit" /><br>
-        </form>
+        </form>-->
         
     </body>
 </html>
