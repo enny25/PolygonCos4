@@ -18,6 +18,7 @@ public class DBConnector {
     private static String URL = "jdbc:mysql://localhost/polygon";
     private static String id = "root";			
     private static String pw = "";
+
     
     private Connection con;
 
