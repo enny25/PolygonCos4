@@ -13,14 +13,25 @@ public class Building {
     private String name;
     private String address;
     private int buildingID;
+    private int customerID;
     private double size;
 
-    public Building(String name, String address, int buildingID, double size) {
+    public Building(String name, String address, int buildingID, int customerID, double size) {
         this.name = name;
         this.address = address;
         this.buildingID = buildingID;
+        this.customerID = customerID;
         this.size = size;
     }
+
+    public int getCustomerID() {
+        return customerID;
+    }
+
+    public void setCustomerID(int customerID) {
+        this.customerID = customerID;
+    }
+    
 
     public String getName() {
         return name;
