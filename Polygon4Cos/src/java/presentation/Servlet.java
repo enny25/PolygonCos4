@@ -9,6 +9,7 @@ import domain.DomainFacade;
 import domain.Building;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Date;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -76,7 +77,7 @@ public class Servlet extends HttpServlet {
        private void newCustomer(HttpServletRequest request, HttpServletResponse response, DomainFacade df) {
         String name = request.getParameter("name");
         String address = request.getParameter("address");
-        int signupDate = Integer.parseInt(request.getParameter("sign-upDate"));
+        Date signupDate = Date.valueOf(request.getParameter("sign-upDate"));
         
 
         Customer customer = df.createCustomer(name, address, signupDate);

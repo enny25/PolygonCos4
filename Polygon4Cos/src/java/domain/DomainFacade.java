@@ -6,6 +6,7 @@
 package domain;
 
 import dataSource.DBFacade;
+import java.sql.Date;
 import java.util.List;
 
 public class DomainFacade {
@@ -35,7 +36,7 @@ public class DomainFacade {
         return newBuilding;
     }
 
-    public Customer createCustomer(String name, String address, String signupDate) {
+    public Customer createCustomer(String name, String address, Date signupDate) {
         newCustomer = new Customer(name, address, signupDate);
 
         boolean status = dbf.createCustomer(newCustomer);

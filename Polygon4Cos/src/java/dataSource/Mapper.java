@@ -51,7 +51,7 @@ public class Mapper {
             //== insert tuple
             statement.setString(1, c.getName());
             statement.setString(2, c.getAddress());
-            statement.setString(3, c.getSignupDate());
+            statement.setDate(3, c.getSignupDate());
             rowsInserted = statement.executeUpdate();
    
         } catch (SQLException e) {

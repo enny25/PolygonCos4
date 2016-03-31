@@ -5,6 +5,9 @@
  */
 package domain;
 
+import java.sql.Date;
+
+
 /**
  *
  * @author Diana
@@ -13,9 +16,9 @@ public class Customer {
     private String name;
     private String address;
     private int customerId;
-    private String signupDate;
+    private Date signupDate;
 
-    public Customer(String name, String address, String signupDate) {
+    public Customer(String name, String address, Date signupDate) {
         this.name = name;
         this.address = address;
         this.signupDate = signupDate;
@@ -33,7 +36,7 @@ public class Customer {
         return customerId;
     }
 
-    public String getSignupDate() {
+    public Date getSignupDate() {
         return signupDate;
     }
 
@@ -49,7 +52,7 @@ public class Customer {
         this.customerId = customerId;
     }
 
-    public void setSignupDate(String signupDate) {
+    public void setSignupDate(Date signupDate) {
         this.signupDate = signupDate;
     }
 }
