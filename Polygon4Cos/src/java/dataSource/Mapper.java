@@ -20,7 +20,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author
+ * @author1
  */
 public class Mapper {
 
