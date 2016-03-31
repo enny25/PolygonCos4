@@ -8,48 +8,34 @@ package domain;
 import dataSource.DBFacade;
 import java.util.List;
 
-/**
- *
- * @author Minerva
- */
 public class DomainFacade {
-    private Building newBuilding;       
+
+    private Building newBuilding;
     private DBFacade dbf;
- 
-    private DomainFacade()
-    {
-        newBuilding = null;       
+
+    private DomainFacade() {
+        newBuilding = null;
         dbf = DBFacade.getInstance();
     }
 
-    public static DomainFacade getInstance()
-    {
-         return new DomainFacade();
+    public static DomainFacade getInstance() {
+        return new DomainFacade();
     }
     //----------------------
 
-    public Building createBuilding(String name, String address, int buildingID, double size )
-    {
+    public Building createBuilding(String name, String address, int buildingID, double size) {
         newBuilding = new Building(name, address, buildingID, size);
 
-        boolean status = dbf.createPlayer(newBuilding);
-        if (!status)
-        {
+        boolean status = dbf.createBuilding(newBuilding);
+        if (!status) {
             newBuilding = null;
         }
 
         return newBuilding;
     }
-    
-   
-    
-     
-    
-     
+
      public List<Building> showBuildings(){
-        List <Building> allBuildings = dbf.showPlayers();
+        List <Building> allBuildings = dbf.showBuildings();
         return allBuildings;
-    }
-     
-         
+}
 }

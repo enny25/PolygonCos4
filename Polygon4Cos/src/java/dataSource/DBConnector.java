@@ -10,12 +10,12 @@ import java.sql.DriverManager;
 
 /**
  *
- * @author Minerva
+ * @author 
  */
 public class DBConnector {
     
   private static String driver = "com.mysql.jdbc.Driver";
-    private static String URL = "jdbc:mysql://localhost/Soccer";
+    private static String URL = "jdbc:mysql://localhost/polygon";
     private static String id = "root";			
     private static String pw = "test";
     

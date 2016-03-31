@@ -7,9 +7,10 @@ package domain;
 
 /**
  *
- * @author Minerva
+ * @author 
  */
 public class Building {
+
     private String name;
     private String address;
     private int buildingID;
@@ -24,6 +25,10 @@ public class Building {
         this.size = size;
     }
 
+    Building(String name, String address, int buildingID, double size) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public int getCustomerID() {
         return customerID;
     }
@@ -31,7 +36,6 @@ public class Building {
     public void setCustomerID(int customerID) {
         this.customerID = customerID;
     }
-    
 
     public String getName() {
         return name;
@@ -52,8 +56,8 @@ public class Building {
     public int getBuildingID() {
         return buildingID;
     }
-    
-     public double getSize() {
+
+    public double getSize() {
         return size;
     }
 
@@ -61,7 +65,4 @@ public class Building {
         this.size = size;
     }
 
-    
-    
-    
 }

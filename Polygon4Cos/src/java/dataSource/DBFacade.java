@@ -4,46 +4,55 @@
  * and open the template in the editor.
  */
 package dataSource;
+
 import domain.Building;
 import java.sql.Connection;
 import java.util.List;
 
 /**
  *
- * @author Minerva
+ * @author
  */
 public class DBFacade {
-          private Mapper map; 
-	  private Connection con;
-	  
-	  // Singleton start
-	  private static DBFacade instance;
-	 
-	  private DBFacade() {
-		  map 	= new Mapper();
-		  con 	= DBConnector.getInstance().getConnection();  		  
-	  }
-	  public static DBFacade getInstance()
-	  {
-		  if(instance == null)
-			  instance = new DBFacade();
-		  return instance;
-	  }
-	  // Singleton end
 
-	  public boolean createPlayer(Building p){
+    private Mapper map;
+    private Connection con;
 
-              return map.createPlayer(p, con);
-          }
-          
- 
-           
-           public List<Building> showPlayers() 
-	  {
-		  return map.showPlayers2(con);	      
-	  }
-           
+    // Singleton start
+    private static DBFacade instance;
 
+    private DBFacade() {
+        map = new Mapper();
+        con = DBConnector.getInstance().getConnection();
+    }
 
-	
+    public static DBFacade getInstance() {
+        if (instance == null) {
+            instance = new DBFacade();
+        }
+        return instance;
+    }
+    // Singleton end
+
+    public boolean createBuilding(Building p) {
+
+        return map.createBuilding(p, con);
+    }
+
+    public List<Building> showBuildings() {
+        return map.showBuildings(con);
+    }
+//
+//    public boolean createGoal(Goal g) {
+//
+//        return map.createGoal(g, con);
+//    }
+//
+//    public boolean createMatch(Match match) {
+//        return map.createMatch(match, con);
+//    }
+//
+//    public boolean deleteGoal(Goal g) {
+//        return map.deleteGoal(g, con);
+//    }
 }
