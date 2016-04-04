@@ -4,7 +4,9 @@
  * and open the template in the editor.
  */
 package presentation;
-
+import domain.ReportConclusion;
+import domain.RoomReport;
+import domain.Report;
 import domain.Customer;
 import domain.DomainFacade;
 import domain.Building;
@@ -18,7 +20,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -54,6 +55,17 @@ public class Servlet extends HttpServlet {
                     newCustomer(request, response, df);
                     break;
 
+                case "createReport":
+                    newReport(request, response, df);
+                    break;
+                    
+                    case "createRoomReport":
+                    newRoomReport(request, response, df);
+                    break;
+                    
+                    case "createReportConclusion":
+                    newReportConclusion(request, response, df);
+                    break;
             }
 
         }
@@ -78,6 +90,56 @@ public class Servlet extends HttpServlet {
         Customer customer = df.createCustomer(name, address, signupDate);
 
         request.setAttribute("customer", customer);
+    }
+
+    private void newReport(HttpServletRequest request, HttpServletResponse response, DomainFacade df) {
+        String name = request.getParameter("buildingName");
+        String address = request.getParameter("address");
+        String postnrCity = request.getParameter("postnrCity");
+        int reportNr = Integer.parseInt(request.getParameter("reportNr"));
+        Date signupDate = Date.valueOf(request.getParameter("date"));
+        int buildingYear = Integer.parseInt(request.getParameter("buildingYear"));
+        double size = Double.parseDouble(request.getParameter("size"));
+        String useOfBuilding = request.getParameter("useOfBuilding");
+        String roof = request.getParameter("roof");
+        String outerWalls = request.getParameter("outerWalls");
+
+        Report report = df.createReport(name, address, postnrCity, reportNr, signupDate, buildingYear, size, useOfBuilding, roof, outerWalls);
+
+        request.setAttribute("report", report);
+    }
+    
+    private void newRoomReport(HttpServletRequest request, HttpServletResponse response, DomainFacade df){
+        int reportNr = Integer.parseInt(request.getParameter("reportNr"));
+        String room = request.getParameter("room");
+        String damageToTheRoom = request.getParameter("damageToTheRoom");
+        String damageDoneWhen = request.getParameter("damageDoneWhen");
+        String damageDoneWhere = request.getParameter("damageDoneWhere");
+        String whatIsTheDamage = request.getParameter("whatIsTheDamage");
+        String whatIsRepared = request.getParameter("whatIsRepared");
+        String damage = request.getParameter("damage");
+        String walls = request.getParameter("walls");
+        String ceiling = request.getParameter("ceiling");
+        String floor = request.getParameter("floor");
+        String windowsDoors = request.getParameter("windowsDoors");
+        String humidityScan = request.getParameter("humidityScan");
+        
+        RoomReport roomReport = df.createRoomReport(RoomReport roomReport);
+
+        request.setAttribute("roomReport", roomReport);
+    }
+    
+    private void newReportConclusion(HttpServletRequest request, HttpServletResponse response, DomainFacade df){
+        int reportNr = Integer.parseInt(request.getParameter("reportNr"));
+        String room = request.getParameter("room");
+        String roomRecomedation = request.getParameter("roomRecomedation");
+        String reportAuthor = request.getParameter("reportAuthor");
+        String buildingOwner = request.getParameter("buildingOwner");
+        int buildingState = Integer.parseInt(request.getParameter("buildingState"));
+        
+        ReportConclusion reportConclusion = df.createReportConclusion(ReportConclusion reportConclusion);
+        
+        request.setAttribute("reportConclusion", reportConclusion);
     }
 
 //    private void showBuildings(HttpServletRequest request, HttpServletResponse response, DomainFacade df) throws ServletException, IOException {
@@ -125,5 +187,7 @@ public class Servlet extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
+
 
 }

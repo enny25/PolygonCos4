@@ -5,18 +5,16 @@
  */
 package dataSource;
 
-
+import domain.RoomReport;
+import domain.Report;
+import domain.ReportConclusion;
 import domain.Building;
 import domain.Customer;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 /**
  *
@@ -59,6 +57,18 @@ public class Mapper {
 
         }
         return rowsInserted == 1;
+    }
+    
+    public boolean creatReport(Report r, Connection con){
+        
+    }
+    
+    public boolean creatRoomReport(RoomReport rr, Connection con){
+        
+    }
+    
+    public boolean creatReportConclusion(ReportConclusion rc, Connection con){
+        
     }
 //     List<Building> showBuildings(Connection con) {
 //        return showBuildings(con);

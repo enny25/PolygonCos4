@@ -4,10 +4,13 @@
  * and open the template in the editor.
  */
 package dataSource;
+
+import domain.RoomReport;
 import domain.Customer;
 import domain.Building;
+import domain.Report;
+import domain.ReportConclusion;
 import java.sql.Connection;
-import java.util.List;
 
 /**
  *
@@ -42,6 +45,21 @@ public class DBFacade {
     public boolean createCustomer(Customer c) {
 
         return map.createCustomer(c, con);
+    }
+
+    public boolean createReport(Report r) {
+       
+        return map.createReport(r, con);
+    }
+    
+    public boolean createRoomReport(RoomReport rr) {
+       
+        return map.createRoomReport(rr, con);
+    }
+    
+    public boolean createReportConclusion(ReportConclusion rc) {
+       
+        return map.createReportConclusion(rc, con);
     }
 
 //    public List<Building> showBuildings() {
