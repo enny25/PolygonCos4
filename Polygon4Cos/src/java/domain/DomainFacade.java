@@ -41,7 +41,6 @@ public class DomainFacade {
 
     public Customer createCustomer(String name, String address, Date signupDate) {
         newCustomer = new Customer(name, address, signupDate);
-
         boolean status = dbf.createCustomer(newCustomer);
         if (!status) {
             newCustomer = null;
@@ -50,9 +49,8 @@ public class DomainFacade {
         return newCustomer;
     }
 
-    public Report createReport(String buildingName, String address, String postnrCity, int reportNr, Date date, int buildingYear, double size, String useOfBuilding, String roof, String outerWalls) {
-        newReport = new Report(buildingName, address, postnrCity, reportNr, date, buildingYear, size, useOfBuilding, roof, outerWalls);
-
+    public Report createReport(Report r) {
+        newReport = new Report(r.getBuildingName(), r.getAddress(), r.getPostnrCity(), r.getReportNr(), r.getDate(), r.getBuildingYear(), r.getSize(), r.getUseOfBuilding(), r.getRoof(), r.getOuterWalls());
         boolean status = dbf.createReport(newReport);
         if (!status) {
             newReport = null;
@@ -60,8 +58,8 @@ public class DomainFacade {
         return newReport;
     }
 
-    public RoomReport createRoomReport(int reportNr, String room, String damageToTheRoom, String damageDoneWhen, String damageDoneWhere, String whatIsTheDamage, String whatIsRepared, String damage, String walls, String ceiling, String floor, String windowsDoors, String humidityScan) {
-        newRoomReport = new RoomReport(reportNr, room, damageToTheRoom, damageDoneWhen, damageDoneWhere, whatIsTheDamage, whatIsRepared, damage, walls, ceiling, floor, windowsDoors, humidityScan);
+    public RoomReport createRoomReport(RoomReport rr) {
+        newRoomReport = new RoomReport(rr.getReportNr(), rr.getRoom(), rr.getDamageToTheRoom(), rr.getDamageDoneWhere(), rr.getWhatIsTheDamage(), rr.getWhatIsRepared(), rr.getDamage(), rr.getWalls(), rr.getCeiling(), rr.getFloor(), rr.getWindowsDoors(), rr.getHumidityScan());
         boolean status = dbf.createRoomReport(newRoomReport);
         if (!status) {
             newRoomReport = null;
@@ -69,8 +67,8 @@ public class DomainFacade {
         return newRoomReport;
     }
 
-    public ReportConclusion createReportConclusion(int reportNr, String room, String roomRecomedation, String reportAuthor, String buildingOwner, int buildingState) {
-        newReportConclusion = new ReportConclusion(reportNr, room, roomRecomedation, reportAuthor, buildingOwner, buildingState);
+    public ReportConclusion createReportConclusion(ReportConclusion rc) {
+        newReportConclusion = new ReportConclusion(rc.getReportNr(), rc.getRoom(), rc.getRoomRecomedation(), rc.getReportAuthor(), rc.getBuildingOwner(), rc.getBuildingState());
         boolean status = dbf.createReportConclusion(newReportConclusion);
         if (!status) {
             newReportConclusion = null;

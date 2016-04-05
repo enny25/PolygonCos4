@@ -40,6 +40,10 @@ public class RoomReport {
         this.humidityScan = humidityScan;
     }
 
+    RoomReport(int reportNr, String room, String damageToTheRoom, String damageDoneWhere, String whatIsTheDamage, String whatIsRepared, String damage, String walls, String ceiling, String floor, String windowsDoors, String humidityScan) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public int getReportNr() {
         return reportNr;
     }

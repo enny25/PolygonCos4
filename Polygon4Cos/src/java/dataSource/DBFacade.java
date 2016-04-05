@@ -50,19 +50,21 @@ public class DBFacade {
     }
 
     public boolean createReport(Report r) {
-       
+
         return mapRep.createReport(r, con);
     }
-    
+
     public boolean createRoomReport(RoomReport rr) {
-       
+
         return mapRep.createRoomReport(rr, con);
     }
-    
+
     public boolean createReportConclusion(ReportConclusion rc) {
-       
+
         return mapRep.createReportConclusion(rc, con);
     }
+    
+    
 
 //    public List<Building> showBuildings() {
 //        return map.showBuildings(con);
@@ -70,5 +72,8 @@ public class DBFacade {
 //
 //    public boolean deleteBuilding(Building b) {
 //        return map.deleteBuilding(b, con);
+//    }
+//    public boolean updateReport(Report report) {
+//        return mapRep.updateReport(con, report);
 //    }
 }

@@ -54,17 +54,10 @@ public class Servlet extends HttpServlet {
                     newCustomer(request, response, df);
                     break;
 
-                case "createReport":
+                case "uploadReport":
                     newReport(request, response, df);
                     break;
 
-                case "createRoomReport":
-                    newRoomReport(request, response, df);
-                    break;
-
-                case "createReportConclusion":
-                    newReportConclusion(request, response, df);
-                    break;
             }
 
         }
@@ -103,7 +96,7 @@ public class Servlet extends HttpServlet {
         String roof = request.getParameter("roof");
         String outerWalls = request.getParameter("outerWalls");
 
-        Report report = df.createReport(name, address, postnrCity, reportNr, signupDate, buildingYear, size, useOfBuilding, roof, outerWalls);
+        Report report = df.createReport(Report report);
 
         request.setAttribute("report", report);
     }
@@ -123,7 +116,7 @@ public class Servlet extends HttpServlet {
         String windowsDoors = request.getParameter("windowsDoors");
         String humidityScan = request.getParameter("humidityScan");
 
-        RoomReport roomReport = df.createRoomReport(reportNr, room, damageToTheRoom, damageDoneWhen, damageDoneWhere, whatIsTheDamage, whatIsRepared, damage, walls, ceiling, floor, windowsDoors, humidityScan);
+        RoomReport roomReport = df.createRoomReport(RoomReport roomReport);
 
         request.setAttribute("roomReport", roomReport);
     }
@@ -136,7 +129,7 @@ public class Servlet extends HttpServlet {
         String buildingOwner = request.getParameter("buildingOwner");
         int buildingState = Integer.parseInt(request.getParameter("buildingState"));
 
-        ReportConclusion reportConclusion = df.createReportConclusion(reportNr, room, roomRecomedation, reportAuthor, buildingOwner, buildingState);
+        ReportConclusion reportConclusion = df.createReportConclusion(ReportConclusion reportConclusion);
 
         request.setAttribute("reportConclusion", reportConclusion);
     }
@@ -148,7 +141,6 @@ public class Servlet extends HttpServlet {
 //        RequestDispatcher dispatcher = request.getRequestDispatcher("ShowData.jsp");
 //        dispatcher.forward(request, response);
 //    }
-    
 //    private void DeleteBuildings(HttpServletRequest request, HttpServletResponse response, DomainFacade df) throws ServletException, IOException {
 //        
 //    }
