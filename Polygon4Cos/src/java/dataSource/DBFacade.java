@@ -68,16 +68,7 @@ public class DBFacade {
 //        return map.showBuildings(con);
 //    }
 //
-//    public boolean createGoal(Goal g) {
-//
-//        return map.createGoal(g, con);
-//    }
-//
-//    public boolean createMatch(Match match) {
-//        return map.createMatch(match, con);
-//    }
-//
-//    public boolean deleteGoal(Goal g) {
-//        return map.deleteGoal(g, con);
+//    public boolean deleteBuilding(Building b) {
+//        return map.deleteBuilding(b, con);
 //    }
 }

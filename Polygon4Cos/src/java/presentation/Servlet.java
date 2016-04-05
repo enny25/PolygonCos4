@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package presentation;
+
 import domain.ReportConclusion;
 import domain.RoomReport;
 import domain.Report;
@@ -13,8 +14,6 @@ import domain.Building;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
-import java.util.List;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -58,12 +57,12 @@ public class Servlet extends HttpServlet {
                 case "createReport":
                     newReport(request, response, df);
                     break;
-                    
-                    case "createRoomReport":
+
+                case "createRoomReport":
                     newRoomReport(request, response, df);
                     break;
-                    
-                    case "createReportConclusion":
+
+                case "createReportConclusion":
                     newReportConclusion(request, response, df);
                     break;
             }
@@ -108,8 +107,8 @@ public class Servlet extends HttpServlet {
 
         request.setAttribute("report", report);
     }
-    
-    private void newRoomReport(HttpServletRequest request, HttpServletResponse response, DomainFacade df){
+
+    private void newRoomReport(HttpServletRequest request, HttpServletResponse response, DomainFacade df) {
         int reportNr = Integer.parseInt(request.getParameter("reportNr"));
         String room = request.getParameter("room");
         String damageToTheRoom = request.getParameter("damageToTheRoom");
@@ -123,22 +122,22 @@ public class Servlet extends HttpServlet {
         String floor = request.getParameter("floor");
         String windowsDoors = request.getParameter("windowsDoors");
         String humidityScan = request.getParameter("humidityScan");
-        
-        RoomReport roomReport = df.createRoomReport(RoomReport roomReport);
+
+        RoomReport roomReport = df.createRoomReport(reportNr, room, damageToTheRoom, damageDoneWhen, damageDoneWhere, whatIsTheDamage, whatIsRepared, damage, walls, ceiling, floor, windowsDoors, humidityScan);
 
         request.setAttribute("roomReport", roomReport);
     }
-    
-    private void newReportConclusion(HttpServletRequest request, HttpServletResponse response, DomainFacade df){
+
+    private void newReportConclusion(HttpServletRequest request, HttpServletResponse response, DomainFacade df) {
         int reportNr = Integer.parseInt(request.getParameter("reportNr"));
         String room = request.getParameter("room");
         String roomRecomedation = request.getParameter("roomRecomedation");
         String reportAuthor = request.getParameter("reportAuthor");
         String buildingOwner = request.getParameter("buildingOwner");
         int buildingState = Integer.parseInt(request.getParameter("buildingState"));
-        
-        ReportConclusion reportConclusion = df.createReportConclusion(ReportConclusion reportConclusion);
-        
+
+        ReportConclusion reportConclusion = df.createReportConclusion(reportNr, room, roomRecomedation, reportAuthor, buildingOwner, buildingState);
+
         request.setAttribute("reportConclusion", reportConclusion);
     }
 
@@ -148,6 +147,10 @@ public class Servlet extends HttpServlet {
 //
 //        RequestDispatcher dispatcher = request.getRequestDispatcher("ShowData.jsp");
 //        dispatcher.forward(request, response);
+//    }
+    
+//    private void DeleteBuildings(HttpServletRequest request, HttpServletResponse response, DomainFacade df) throws ServletException, IOException {
+//        
 //    }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -187,7 +190,5 @@ public class Servlet extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
-
 
 }
