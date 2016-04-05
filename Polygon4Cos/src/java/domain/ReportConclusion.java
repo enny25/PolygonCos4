@@ -12,15 +12,15 @@ package domain;
 public class ReportConclusion {
     private int reportNr;
     private String room;
-    private String roomRecomedation;
+    private String roomRecomendation;
     private String reportAuthor;
     private String buildingOwner;
     private int buildingState;
 
-    public ReportConclusion(int reportNr, String room, String roomRecomedation, String reportAuthor, String buildingOwner, int buildingState) {
+    public ReportConclusion(int reportNr, String room, String roomRecomendation, String reportAuthor, String buildingOwner, int buildingState) {
         this.reportNr = reportNr;
         this.room = room;
-        this.roomRecomedation = roomRecomedation;
+        this.roomRecomendation = roomRecomendation;
         this.reportAuthor = reportAuthor;
         this.buildingOwner = buildingOwner;
         this.buildingState = buildingState;
@@ -42,12 +42,12 @@ public class ReportConclusion {
         this.room = room;
     }
 
-    public String getRoomRecomedation() {
-        return roomRecomedation;
+    public String getRoomRecomendation() {
+        return roomRecomendation;
     }
 
-    public void setRoomRecomedation(String roomRecomedation) {
-        this.roomRecomedation = roomRecomedation;
+    public void setRoomRecomendation(String roomRecomendation) {
+        this.roomRecomendation = roomRecomendation;
     }
 
     public String getReportAuthor() {
