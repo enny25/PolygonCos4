@@ -68,7 +68,7 @@ public class DomainFacade {
     }
 
     public ReportConclusion createReportConclusion(ReportConclusion rc) {
-        newReportConclusion = new ReportConclusion(rc.getReportNr(), rc.getRoom(), rc.getRoomRecomedation(), rc.getReportAuthor(), rc.getBuildingOwner(), rc.getBuildingState());
+        newReportConclusion = new ReportConclusion(rc.getReportNr(), rc.getRoom(), rc.getRoomRecomendation(), rc.getReportAuthor(), rc.getBuildingOwner(), rc.getBuildingState());
         boolean status = dbf.createReportConclusion(newReportConclusion);
         if (!status) {
             newReportConclusion = null;
@@ -80,4 +80,12 @@ public class DomainFacade {
 //        List <Building> allBuildings = dbf.showBuildings();
 //        return allBuildings;
 //}
+
+    public void createReport(Report r, RoomReport rr, ReportConclusion rc) {
+        createReport(r);
+        createRoomReport(rr);
+        createReportConclusion(rc);
+
+    }
+
 }

@@ -55,7 +55,7 @@ public class Servlet extends HttpServlet {
                     break;
 
                 case "uploadReport":
-                    newReport(request, response, df);
+                    uploadReport(request, response, df);
                     break;
 
             }
@@ -95,14 +95,14 @@ public class Servlet extends HttpServlet {
         String useOfBuilding = request.getParameter("useOfBuilding");
         String roof = request.getParameter("roof");
         String outerWalls = request.getParameter("outerWalls");
-        
 
+        Report report = new Report(name, address, postnrCity, reportNr, signupDate, buildingYear, size, useOfBuilding, roof, outerWalls);
 
         request.setAttribute("report", report);
         return report;
     }
 
-    private void newRoomReport(HttpServletRequest request, HttpServletResponse response) {
+    private RoomReport newRoomReport(HttpServletRequest request, HttpServletResponse response) {
         int reportNr = Integer.parseInt(request.getParameter("reportNr"));
         String room = request.getParameter("room");
         String damageToTheRoom = request.getParameter("damageToTheRoom");
@@ -117,29 +117,33 @@ public class Servlet extends HttpServlet {
         String windowsDoors = request.getParameter("windowsDoors");
         String humidityScan = request.getParameter("humidityScan");
 
-        RoomReport roomReport = df.createRoomReport(RoomReport roomReport);
+        RoomReport roomReport = new RoomReport(reportNr, room, damageToTheRoom, damageDoneWhen, damageDoneWhere, whatIsTheDamage, whatIsRepared, damage, walls, ceiling, floor, windowsDoors, humidityScan);
 
         request.setAttribute("roomReport", roomReport);
+        return roomReport;
     }
 
-    private void newReportConclusion(HttpServletRequest request, HttpServletResponse response, DomainFacade df) {
+    private ReportConclusion newReportConclusion(HttpServletRequest request, HttpServletResponse response) {
         int reportNr = Integer.parseInt(request.getParameter("reportNr"));
         String room = request.getParameter("room");
         String roomRecomendation = request.getParameter("roomRecomedation");
         String reportAuthor = request.getParameter("reportAuthor");
         String buildingOwner = request.getParameter("buildingOwner");
         int buildingState = Integer.parseInt(request.getParameter("buildingState"));
-        ReportConclusion reportConclusion1 = new ReportConclusion(reportNr,room
-        ,roomRecomendation,reportAuthor,buildingOwner,buildingState);
 
-        ReportConclusion reportConclusion = df.createReportConclusion(reportConclusion1);
+        ReportConclusion reportConclusion = new ReportConclusion(reportNr, room, roomRecomendation, reportAuthor, buildingOwner, buildingState);
 
         request.setAttribute("reportConclusion", reportConclusion);
+        return reportConclusion;
     }
-    private void uploadReport(HttpServletRequest request, HttpServletResponse response, DomainFacade df){
+
+    private void uploadReport(HttpServletRequest request, HttpServletResponse response, DomainFacade df) {
         Report r = newReport(request, response);
-                
-        df.createReport(r,rr,rc);
+        RoomReport rr = newRoomReport(request, response);
+        ReportConclusion rc = newReportConclusion(request, response);
+
+        df.createReport(r, rr, rc);
+        
     }
 
 //    private void showBuildings(HttpServletRequest request, HttpServletResponse response, DomainFacade df) throws ServletException, IOException {
