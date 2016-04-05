@@ -5,9 +5,6 @@
  */
 package dataSource;
 
-import domain.RoomReport;
-import domain.Report;
-import domain.ReportConclusion;
 import domain.Building;
 import domain.Customer;
 import java.sql.Connection;
@@ -59,17 +56,7 @@ public class Mapper {
         return rowsInserted == 1;
     }
     
-    public boolean creatReport(Report r, Connection con){
-        
-    }
-    
-    public boolean creatRoomReport(RoomReport rr, Connection con){
-        
-    }
-    
-    public boolean creatReportConclusion(ReportConclusion rc, Connection con){
-        
-    }
+
 //     List<Building> showBuildings(Connection con) {
 //        return showBuildings(con);
 //    }

@@ -18,6 +18,7 @@ import java.sql.Connection;
  */
 public class DBFacade {
 
+    private MapperReports mapRep;
     private Mapper map;
     private Connection con;
 
@@ -25,6 +26,7 @@ public class DBFacade {
     private static DBFacade instance;
 
     private DBFacade() {
+        mapRep = new MapperReports();
         map = new Mapper();
         con = DBConnector.getInstance().getConnection();
     }
@@ -49,17 +51,17 @@ public class DBFacade {
 
     public boolean createReport(Report r) {
        
-        return map.createReport(r, con);
+        return mapRep.createReport(r, con);
     }
     
     public boolean createRoomReport(RoomReport rr) {
        
-        return map.createRoomReport(rr, con);
+        return mapRep.createRoomReport(rr, con);
     }
     
     public boolean createReportConclusion(ReportConclusion rc) {
        
-        return map.createReportConclusion(rc, con);
+        return mapRep.createReportConclusion(rc, con);
     }
 
 //    public List<Building> showBuildings() {
