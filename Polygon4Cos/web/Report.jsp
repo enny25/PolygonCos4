@@ -43,6 +43,7 @@
                 background-color: lightgrey;
             }
 
+
             .second{
                 width: 100%;
                 -webkit-box-sizing: border-box;
@@ -53,7 +54,7 @@
             .secondText{
                 font-size: 80%
             }
-            
+
             .gI{
                 background-color: lightblue;
                 text-align: center;
@@ -65,6 +66,26 @@
                 text-align: center;
                 font-family: Verdana;  
                 font-size: 1em;
+            }
+
+            .rTableBody{
+                display:table;         
+                width:auto;         
+                background-color:#eee;         
+                border:1px solid  #666666;         
+                border-spacing:5px;/*cellspacing:poor IE support for  this*/
+            }
+            .rTableRow{
+                display:table-row;
+                width:auto;
+                clear:both;
+            }
+            .rTableCell{
+                float:left;/*fix for  buggy browsers*/
+                display:table-column;         
+                width:200px;  
+                border: 1px solid black;
+                background-color:#ccc;  
             }
         </style>
 
@@ -116,7 +137,34 @@
             What is the building used for / what was the building used for ? 
             <div class="gInfo"><input type="text" name="buildingUsedFor" value=""></div><br>
         </div>
-        Review of building outside<br>
+
+        <h2>Review of building outside<br></h2>   
+
+        <div class="rTable">         
+            <div class="rTableBody">
+                <div class="rTableRow">
+                    <div class="rTableCell">Roof</div>
+                    <div class="rTableCell">Remarks</div>
+                    <div class="rTableCell">No remarks</div>
+                    <div class="rTableCell">Pictures</div>
+                </div>
+                <div class="rTableRow">
+                    <div class="rTableCell">&nbsp;</div>
+                    <div class="rTableCell">&nbsp;</div>
+                    <div class="rTableCell">&nbsp;</div>
+                    <div class="rTableCell">&nbsp;</div>
+                </div>
+                <div class="rTableRow">
+                    <div class="rTableCell">&nbsp;</div>
+                    <div class="rTableCell">&nbsp;</div>
+                    <div class="rTableCell">&nbsp;</div>
+                    <div class="rTableCell">&nbsp;</div>
+                </div>
+            </div>
+        </div>
+
+
+
         <br><table border="1" style="width :50%" cellpadding="0" cellspacing="0">
             <tbody><tr>
                     <td>Roof</td>
@@ -133,7 +181,7 @@
                 </tr>
 
                 <tr>                
-                    <td colspan="4"><input type="text" name="Roof" value=""></td>
+                    <td colspan = "4"><input type="text" name="test" value="" size="100%" /></td>
                 </tr>           
             </tbody></table><br>
         <table border="1" style="width :50%" cellpadding="0" cellspacing="0">
@@ -200,7 +248,7 @@
 
 
         Review of...
-        <br><br><br><br><br><br><br><br><br><br><br><br><br><table border="1" style="width :50%" cellpadding="0" cellspacing="0">
+        <table border="1" style="width :50%" cellpadding="0" cellspacing="0">
             <tbody><tr>
                     <td>&nbsp;</td>
                     <td>Remarks</td>
