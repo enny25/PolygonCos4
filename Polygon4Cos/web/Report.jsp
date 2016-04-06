@@ -53,7 +53,7 @@
             .secondText{
                 font-size: 80%
             }
-            
+
             .gI{
                 background-color: lightblue;
                 text-align: center;
@@ -73,7 +73,6 @@
 
 
     </head>
-    <body>
     <body>
 
         <h1>Building Review</h1>
@@ -371,5 +370,4 @@
 
 
     </body>
-</body>
 </html>
