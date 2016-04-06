@@ -5,12 +5,15 @@
  */
 package presentation;
 
+import domain.ReportConclusion;
+import domain.RoomReport;
+import domain.Report;
+import domain.Customer;
 import domain.DomainFacade;
 import domain.Building;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
-import javax.servlet.RequestDispatcher;
+import java.sql.Date;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -35,14 +38,24 @@ public class Servlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
         response.setContentType("text/html;charset=UTF-8");
         DomainFacade df = DomainFacade.getInstance();
-        String create = request.getParameter("create");
+
+        String action = request.getParameter("action");
         try (PrintWriter out = response.getWriter()) {
-            switch (create) {
+            switch (action) {
 
                 case "addBuilding":
                     newBuilding(request, response, df);
+                    break;
+
+                case "createCustomer":
+                    newCustomer(request, response, df);
+                    break;
+
+                case "uploadReport":
+                    uploadReport(request, response, df);
                     break;
 
             }
@@ -61,6 +74,78 @@ public class Servlet extends HttpServlet {
         request.setAttribute("building", building);
     }
 
+    private void newCustomer(HttpServletRequest request, HttpServletResponse response, DomainFacade df) {
+        String name = request.getParameter("name");
+        String address = request.getParameter("address");
+        Date signupDate = Date.valueOf(request.getParameter("sign-upDate"));
+
+        Customer customer = df.createCustomer(name, address, signupDate);
+
+        request.setAttribute("customer", customer);
+    }
+
+    private Report newReport(HttpServletRequest request, HttpServletResponse response) {
+        String name = request.getParameter("buildingName");
+        String address = request.getParameter("address");
+        String postnrCity = request.getParameter("postnrCity");
+        int reportNr = Integer.parseInt(request.getParameter("reportNr"));
+        Date signupDate = Date.valueOf(request.getParameter("date"));
+        int buildingYear = Integer.parseInt(request.getParameter("buildingYear"));
+        double size = Double.parseDouble(request.getParameter("size"));
+        String useOfBuilding = request.getParameter("useOfBuilding");
+        String roof = request.getParameter("roof");
+        String outerWalls = request.getParameter("outerWalls");
+
+        Report report = new Report(name, address, postnrCity, reportNr, signupDate, buildingYear, size, useOfBuilding, roof, outerWalls);
+
+        request.setAttribute("report", report);
+        return report;
+    }
+
+    private RoomReport newRoomReport(HttpServletRequest request, HttpServletResponse response) {
+        int reportNr = Integer.parseInt(request.getParameter("reportNr"));
+        String room = request.getParameter("room");
+        String damageToTheRoom = request.getParameter("damageToTheRoom");
+        String damageDoneWhen = request.getParameter("damageDoneWhen");
+        String damageDoneWhere = request.getParameter("damageDoneWhere");
+        String whatIsTheDamage = request.getParameter("whatIsTheDamage");
+        String whatIsRepared = request.getParameter("whatIsRepared");
+        String damage = request.getParameter("damage");
+        String walls = request.getParameter("walls");
+        String ceiling = request.getParameter("ceiling");
+        String floor = request.getParameter("floor");
+        String windowsDoors = request.getParameter("windowsDoors");
+        String humidityScan = request.getParameter("humidityScan");
+
+        RoomReport roomReport = new RoomReport(reportNr, room, damageToTheRoom, damageDoneWhen, damageDoneWhere, whatIsTheDamage, whatIsRepared, damage, walls, ceiling, floor, windowsDoors, humidityScan);
+
+        request.setAttribute("roomReport", roomReport);
+        return roomReport;
+    }
+
+    private ReportConclusion newReportConclusion(HttpServletRequest request, HttpServletResponse response) {
+        int reportNr = Integer.parseInt(request.getParameter("reportNr"));
+        String room = request.getParameter("room");
+        String roomRecomendation = request.getParameter("roomRecomedation");
+        String reportAuthor = request.getParameter("reportAuthor");
+        String buildingOwner = request.getParameter("buildingOwner");
+        int buildingState = Integer.parseInt(request.getParameter("buildingState"));
+
+        ReportConclusion reportConclusion = new ReportConclusion(reportNr, room, roomRecomendation, reportAuthor, buildingOwner, buildingState);
+
+        request.setAttribute("reportConclusion", reportConclusion);
+        return reportConclusion;
+    }
+
+    private void uploadReport(HttpServletRequest request, HttpServletResponse response, DomainFacade df) {
+        Report r = newReport(request, response);
+        RoomReport rr = newRoomReport(request, response);
+        ReportConclusion rc = newReportConclusion(request, response);
+
+        df.createReport(r, rr, rc);
+        
+    }
+
 //    private void showBuildings(HttpServletRequest request, HttpServletResponse response, DomainFacade df) throws ServletException, IOException {
 //        List<Building> buildings = df.showBuildings();
 //        request.setAttribute("buildings", buildings);
@@ -68,7 +153,9 @@ public class Servlet extends HttpServlet {
 //        RequestDispatcher dispatcher = request.getRequestDispatcher("ShowData.jsp");
 //        dispatcher.forward(request, response);
 //    }
-
+//    private void DeleteBuildings(HttpServletRequest request, HttpServletResponse response, DomainFacade df) throws ServletException, IOException {
+//        
+//    }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

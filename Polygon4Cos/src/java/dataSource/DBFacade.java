@@ -5,9 +5,12 @@
  */
 package dataSource;
 
+import domain.RoomReport;
+import domain.Customer;
 import domain.Building;
+import domain.Report;
+import domain.ReportConclusion;
 import java.sql.Connection;
-import java.util.List;
 
 /**
  *
@@ -15,6 +18,7 @@ import java.util.List;
  */
 public class DBFacade {
 
+    private MapperReports mapRep;
     private Mapper map;
     private Connection con;
 
@@ -22,6 +26,7 @@ public class DBFacade {
     private static DBFacade instance;
 
     private DBFacade() {
+        mapRep = new MapperReports();
         map = new Mapper();
         con = DBConnector.getInstance().getConnection();
     }
@@ -34,25 +39,41 @@ public class DBFacade {
     }
     // Singleton end
 
-    public boolean createBuilding(Building p) {
+    public boolean createBuilding(Building b) {
 
-        return map.createBuilding(p, con);
+        return map.createBuilding(b, con);
     }
+
+    public boolean createCustomer(Customer c) {
+
+        return map.createCustomer(c, con);
+    }
+
+    public boolean createReport(Report r) {
+
+        return mapRep.createReport(r, con);
+    }
+
+    public boolean createRoomReport(RoomReport rr) {
+
+        return mapRep.createRoomReport(rr, con);
+    }
+
+    public boolean createReportConclusion(ReportConclusion rc) {
+
+        return mapRep.createReportConclusion(rc, con);
+    }
+    
+    
 
 //    public List<Building> showBuildings() {
 //        return map.showBuildings(con);
 //    }
 //
-//    public boolean createGoal(Goal g) {
-//
-//        return map.createGoal(g, con);
+//    public boolean deleteBuilding(Building b) {
+//        return map.deleteBuilding(b, con);
 //    }
-//
-//    public boolean createMatch(Match match) {
-//        return map.createMatch(match, con);
-//    }
-//
-//    public boolean deleteGoal(Goal g) {
-//        return map.deleteGoal(g, con);
+//    public boolean updateReport(Report report) {
+//        return mapRep.updateReport(con, report);
 //    }
 }

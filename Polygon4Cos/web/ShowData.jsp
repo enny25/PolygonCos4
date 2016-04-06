@@ -13,10 +13,10 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Buildings</title>
     </head>
     <body>
         <h1>Buildings</h1>
+         <form action="Servlet">
         <table>
             <tr>
                 <th>Name</th>
@@ -62,5 +62,6 @@
                 <td><%=customers.get(i).getSignupDate()%></td>
             </tr>
         </table>
+            </form>
     </body>
 </html>

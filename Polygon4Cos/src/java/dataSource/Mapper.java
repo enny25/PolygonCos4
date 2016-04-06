@@ -5,22 +5,16 @@
  */
 package dataSource;
 
-
 import domain.Building;
 import domain.Customer;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
- * @author1
+ * @authorDiana
  */
 public class Mapper {
 
@@ -35,15 +29,32 @@ public class Mapper {
             statement.setString(3, b.getAddress());            
             statement.setDouble(4, b.getSize());
             rowsInserted = statement.executeUpdate();
-   
-        } catch (Exception e) {
-            e.printStackTrace();
+
+        } catch (SQLException e) {
+            System.out.println("Exception = " + e);
 
         }
         return rowsInserted == 1;
     }
-    
-    
+
+    public boolean createCustomer(Customer c, Connection con) {
+        int rowsInserted = 0;
+        String sql = "insert into customer (name, address, signupDate) values (?,?,?)";
+        try (PreparedStatement statement
+                = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+            //== insert tuple
+            statement.setString(1, c.getName());
+            statement.setString(2, c.getAddress());
+            statement.setDate(3, c.getSignupDate());
+            rowsInserted = statement.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println("Exception = " + e);
+
+        }
+        return rowsInserted == 1;
+    }
+
 //     List<Building> showBuildings(Connection con) {
 //        return showBuildings(con);
 //    }
@@ -69,40 +80,8 @@ public class Mapper {
 //            return null;
 //        }
 //    }
-    /*public boolean createGoal(Goal g, Connection con) {
-        int rowsInserted = 0;
-        String sql = "INSERT INTO goal (Player_id, Match_id) VALUES((SELECT Player_id FROM player WHERE Player_name = ?),?)";
-        try (PreparedStatement statement
-                = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
-            //== insert tuple
-            statement.setString(1, g.getPlayer());
-            statement.setInt(2, g.getMatch());
-
-            rowsInserted = statement.executeUpdate();
-   
-        } catch (Exception e) {
-            e.printStackTrace();
-
-        }
-        return rowsInserted == 1;
-    }
+    /*
     
-    public boolean createMatch(Match match, Connection con) {
-        int rowsInserted = 0;
-        String sql = "INSERT INTO `match`(Team1_id,Team2_id) values(?,?)";
-        try (PreparedStatement statement
-                = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
-            //== insert tuple
-            statement.setString(1, match.getTeam1().getTeamName());
-            statement.setString(2, match.getTeam2().getTeamName());            
-            rowsInserted = statement.executeUpdate();
-   
-        } catch (Exception e) {
-            e.printStackTrace();
-
-        }
-        return rowsInserted == 1;
-    }
     public List<Building> showPlayers2(Connection con) {
         return showPlayers(con);
     }
@@ -129,7 +108,7 @@ public class Mapper {
         }
     }
 
-        public int getGoalId (String player, int match, Connection con){
+        public int getBuildingID (String customer, int match, Connection con){
             String SQLString = "select Goal_id from Goal where Player_id =(select Player_id from player where Player_name = ?) and Match_id = ?";
             int goalId=0;
             try (PreparedStatement statement = con.prepareStatement(SQLString)) {
@@ -148,16 +127,16 @@ public class Mapper {
             return goalId;
         }
 
-        boolean deleteGoal(Goal g, Connection con) {
+        boolean deleteBuilding(Building b, Connection con) {
         int rowsUpdated = 0;
         String SQLString
-                = "delete from goal where Goal_id = ?";
-        g.setGoalId(getGoalId(g.getPlayer(),g.getMatch(),con));
+                = "delete from building where buildingID = ?";
+        b.setbuildingID(getBuildingID(b.getCustomer(),b.getReport(),con));
         PreparedStatement statement = null;
         try {
 
             statement = con.prepareStatement(SQLString);
-            statement.setInt(1,g.getGoalId());
+            statement.setInt(1,b.getBuildingID());
             rowsUpdated = statement.executeUpdate();
         } catch (Exception e) {
             System.out.println("Fail1 in OrderMapper - updateOrder");
@@ -174,5 +153,5 @@ public class Mapper {
         return rowsUpdated == 1;
     }
     
-    */
+     */
 }
