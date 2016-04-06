@@ -95,7 +95,6 @@
 
     </head>
     <body>
-    <body>
 
         <h1>Building Review</h1>
 
@@ -419,5 +418,4 @@
 
 
     </body>
-</body>
 </html>

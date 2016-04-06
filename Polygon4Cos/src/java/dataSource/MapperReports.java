@@ -49,14 +49,25 @@ public class MapperReports {
     boolean createRoomReport(RoomReport rr, Connection con) {
 
         int rowsInserted = 0;
-        String sql = "insert into roomReport (reportNr, room, ) values (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        String sql = "insert into roomReport (reportNr, room, damageToTheRoom, damageDoneWhen, damageDoneWhere, whatIsTheDamage, whatIsRepared, damage, walls, ceiling, floor, windowsDoors, humidityScan) values (?,?,?,?,?,?,?,?,?,?,?,?,?)";
         try (PreparedStatement statement
                 = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             //== insert tuple
 
             statement.setInt(1, rr.getReportNr());
-            statement.setString(1, rr.getRoom());
-            
+            statement.setString(2, rr.getRoom());
+            statement.setString(3, rr.getDamageToTheRoom());
+            statement.setString(4, rr.getDamageDoneWhen());
+            statement.setString(5, rr.getDamageDoneWhere());
+            statement.setString(6, rr.getWhatIsTheDamage());
+            statement.setString(7, rr.getWhatIsRepared());
+            statement.setString(8, rr.getDamage());
+            statement.setString(9, rr.getWalls());
+            statement.setString(10, rr.getCeiling());
+            statement.setString(11, rr.getFloor());
+            statement.setString(12, rr.getWindowsDoors());
+            statement.setString(13, rr.getHumidityScan());
+
             rowsInserted = statement.executeUpdate();
 
         } catch (SQLException e) {
@@ -69,13 +80,18 @@ public class MapperReports {
     boolean createReportConclusion(ReportConclusion rc, Connection con) {
 
         int rowsInserted = 0;
-        String sql = "insert into reportConclusion (reportNr, ) values (?,?,?,?,?,?)";
+        String sql = "insert into reportConclusion (reportNr, room, roomRecomendation, reportAuthor, buildingOwner, buildingState) values (?,?,?,?,?,?)";
         try (PreparedStatement statement
                 = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             //== insert tuple
-            
+
             statement.setInt(1, rc.getReportNr());
-            
+            statement.setString(2, rc.getRoom());
+            statement.setString(3, rc.getRoomRecomendation());
+            statement.setString(4, rc.getReportAuthor());
+            statement.setString(5, rc.getBuildingOwner());
+            statement.setInt(6, rc.getBuildingState());
+
             rowsInserted = statement.executeUpdate();
 
         } catch (SQLException e) {
