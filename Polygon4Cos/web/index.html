@@ -6,32 +6,76 @@ and open the template in the editor.
 -->
 <html>
     <head>
+        <style>
+            ul {
+                list-style-type: none;                
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+                border: 1px solid lightblue;
+                background-color: lightblue;
+            }
+
+            li {
+                float: left;
+            }
+
+            li a {
+                display: block;
+                color: black;
+                text-align: center;
+                padding: 14px;
+                text-decoration: none;
+            }
+
+            li a:hover:not(.header) {
+                background-color: gray;
+            }
+            
+            
+/*            li a.active {
+                color: white;
+                background-color: #4CAF50;
+            }*/
+
+
+        </style>
         <title>TODO supply a title</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <div>Polygon</div><br>
         
-        <form action="AddBuilding.jsp">
+        <h1>Polygon</h1>
+        <ul>
+            
+<!--            <li><a class="header"> <h1>Polygon</h1></a></li> -->
+            <li><a href="AddBuilding.jsp">Add building </a></li>
+            <li><a href="CreateCustomer.jsp">Create customer</a></li>
+            <li><a href="ShowData.jsp">Show data</a></li>
+            <li><a href="Report.jsp">Report</a></li>
+        </ul>
+
+
+<!--        <form action="AddBuilding.jsp">
             <input type="hidden" value="addBuildingDirect" />
             Direct me to add building!<input type="submit" />
         </form><br>
-        
+
         <form action="CreateCustomer.jsp">
             <input type="hidden" value="createCustomerDirect" />
             Direct me to create customer!<input type="submit" />
         </form><br>
-        
+
         <form action="ShowData.jsp">
             <input type="hidden" value="showDataDirect" />
             Direct me to show data!<input type="submit" />
         </form><br>
-        
+
         <form action="Report.jsp">
             <input type="hidden" value="ReportDirect" />
             Direct me to report!<input type="submit" />
-        </form><br>
-        
+        </form><br>-->
+
     </body>
 </html>
