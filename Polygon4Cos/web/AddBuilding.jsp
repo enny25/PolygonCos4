@@ -18,7 +18,7 @@
             <br>Building Name:<input type="text" name="name" value="" /><br>
             <br>Building Address:<input type="text" name="address" value="" /><br>
             <br>Customer ID:<input type="text" name="customerID" value="" /><br>
-            <br>Building Size:<input type="text" name="size" value="" /><br>
+            <br>Building Size (m2):<input type="text" name="size" value="" /><br>
             <br><input type="submit" name="Submit" value="Submit" /><br>
         </form>
         
