@@ -39,13 +39,14 @@ public class Mapper {
 
     public boolean createCustomer(Customer c, Connection con) {
         int rowsInserted = 0;
-        String sql = "insert into customer (name, address, signupDate) values (?,?,?)";
+        String sql = "insert into customer (name, pwd, address, signupDate) values (?,?,?,?)";
         try (PreparedStatement statement
                 = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             //== insert tuple
             statement.setString(1, c.getName());
-            statement.setString(2, c.getAddress());
-            statement.setDate(3, c.getSignupDate());
+            statement.setString(2, c.getPwd());
+            statement.setString(3, c.getAddress());
+            statement.setDate(4, c.getSignupDate());
             rowsInserted = statement.executeUpdate();
 
         } catch (SQLException e) {
@@ -59,7 +60,7 @@ public class Mapper {
 //        return showBuildings(con);
 //    }
 //    private List<Building> showBuildings2(Connection con) {
-//        ArrayList<Building> players = new ArrayList<Building>();
+//        ArrayList<Building> buildings = new ArrayList<Building>();
 //        String SQLString = "select * from building";
 //               
 //        try (PreparedStatement statement = con.prepareStatement(SQLString)) {
@@ -70,10 +71,10 @@ public class Mapper {
 //                    rs.getString("Building_name"),
 //                    rs.getString("Building_address"),
 //                    rs.getInt("Building_buildingID"), customer);
-//                    players.add(building);
+//                    buildings.add(building);
 //                }
 //            
-//            return players;
+//            return buildings;
 //        } catch (Exception e) {
 //            System.out.println("Fail1 in OrderMapper - getOrder");
 //            System.out.println(e.getMessage());
@@ -82,25 +83,25 @@ public class Mapper {
 //    }
     /*
     
-    public List<Building> showPlayers2(Connection con) {
-        return showPlayers(con);
+    public List<Building> showBuildings(Connection con) {
+        return showBuildings(con);
     }
-        private List<Building> showPlayers(Connection con) {
-        ArrayList<Building> players = new ArrayList<Building>();
+        private List<Building> showBuildings(Connection con) {
+        ArrayList<Building> buildings = new ArrayList<Building>();
         String SQLString = "select * from building";
                
         try (PreparedStatement statement = con.prepareStatement(SQLString)) {
             ResultSet rs = statement.executeQuery();
             while (rs.next()) {
-                    Team t = new Team(rs.getString("Team_id"));
+                    Customer c = new Customer(rs.getString("CustomerId"));
                     Building p = new Building(
-                    rs.getString("Player_name"),
-                    rs.getString("Player_position"),
-                    rs.getInt("Player_number"), t);
-                    players.add(p);
+                    rs.getString("Buildings_name"),
+                    rs.getString("Buildings_address"),
+                    rs.getInt("PlayerId"), c);
+                    buildings.add(b);
                 }
             
-            return players;
+            return buildings;
         } catch (Exception e) {
             System.out.println("Fail1 in OrderMapper - getOrder");
             System.out.println(e.getMessage());

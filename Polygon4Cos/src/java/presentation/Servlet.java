@@ -76,10 +76,11 @@ public class Servlet extends HttpServlet {
 
     private void newCustomer(HttpServletRequest request, HttpServletResponse response, DomainFacade df) {
         String name = request.getParameter("name");
+        String pwd = request.getParameter("pwd");
         String address = request.getParameter("address");
         Date signupDate = Date.valueOf(request.getParameter("sign-upDate"));
 
-        Customer customer = df.createCustomer(name, address, signupDate);
+        Customer customer = df.createCustomer(name, pwd, address, signupDate);
 
         request.setAttribute("customer", customer);
     }

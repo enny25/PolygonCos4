@@ -16,6 +16,7 @@
         <form action="Servlet">
             <input type="hidden" name="action" value="createCustomer" />
             <br>Name:<input type="text" name="name" value="" /><br>
+            <br>Password:<input type="password" name="password" value="" /><br>
             <br>Address:<input type="text" name="address" value="" /><br>
             <br>Sign-up date:<input type="date" name="sign-upDate" value="" /><br>
             <br><input type="submit" name="Submit" value="Submit" /><br>
