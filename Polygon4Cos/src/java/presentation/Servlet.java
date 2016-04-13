@@ -50,7 +50,7 @@ public class Servlet extends HttpServlet {
                     newBuilding(request, response, df);
                     break;
 
-                case "createCustomer":
+                case "register":
                     newCustomer(request, response, df);
                     break;
 

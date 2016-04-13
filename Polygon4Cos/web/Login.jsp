@@ -1,6 +1,6 @@
 <%-- 
-    Document   : CreateCustomer
-    Created on : Mar 31, 2016, 2:34:02 PM
+    Document   : Login
+    Created on : Apr 13, 2016, 1:19:59 PM
     Author     : Diana
 --%>
 
@@ -12,13 +12,11 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Create customer</h1>
+        <h1>Login</h1>
         <form action="Servlet">
             <input type="hidden" name="action" value="createCustomer" />
             <br>Name:<input type="text" name="name" value="" /><br>
             <br>Password:<input type="password" name="password" value="" /><br>
-            <br>Address:<input type="text" name="address" value="" /><br>
-            <br>Sign-up date:<input type="date" name="sign-upDate" value="" /><br>
             <br><input type="submit" name="Submit" value="Submit" /><br>
         </form>
     </body>

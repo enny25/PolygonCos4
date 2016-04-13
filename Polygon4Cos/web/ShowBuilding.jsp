@@ -1,10 +1,12 @@
 <%-- 
     Document   : ShowData
-    Created on : Feb 26, 2016, 8:50:50 AM
-    Author     : 
+    Created on : Mar 31, 2016, 2:34:02 PM
+    Author     : Diana
 --%>
-
 <%@page import="java.util.List"%>
+<%@page import="domain.Report"%>
+<%@page import="domain.ReportConclusion"%>
+<%@page import="domain.RoomReport"%>
 <%@page import="domain.Building"%>
 <%@page import="domain.Customer"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -15,7 +17,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     </head>
     <body>
-        <h1>Buildings</h1>
+        <h1>Show building</h1>
          <form action="Servlet">
         <table>
             <tr>
@@ -39,28 +41,6 @@
                 <td><%=buildings.get(i).getSize()%></td>
             </tr>
             <%} //end of for loop%>
-        </table>
-        <h2>Customers</h2>
-        <table>
-            <tr>
-                <th>Name</th>
-                <th>Address</th>
-                <th>Customer ID</th>
-                <th>Sign-up date</th>
-            </tr>
-             <%
-                List<Customer> customers = (List<Customer>) request.getAttribute("customers");
-
-                for (int i = 0; i < customers.size(); i++) {
-
-
-            %>
-            <tr>
-                <td><%= customers.get(i).getName()%><td>
-                <td><%= customers.get(i).getAddress()%></td>
-                <td><%= customers.get(i).getCustomerId()%></td>
-                <td><%=customers.get(i).getSignupDate()%></td>
-            </tr>
         </table>
             </form>
     </body>
