@@ -14,6 +14,8 @@ import domain.Building;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
+import java.util.List;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -147,11 +149,12 @@ public class Servlet extends HttpServlet {
         
     }
 
-//    private void showBuildings(HttpServletRequest request, HttpServletResponse response, DomainFacade df) throws ServletException, IOException {
-//        List<Building> buildings = df.showBuildings();
-//        request.setAttribute("buildings", buildings);
+//    private void showBuilding(HttpServletRequest request, HttpServletResponse response, DomainFacade df) throws ServletException, IOException {
+//        List<Building> buildingList = df.showBuilding();
+//        request.setAttribute("buildingList", buildingList);
 //
-//        RequestDispatcher dispatcher = request.getRequestDispatcher("ShowData.jsp");
+//        request.setAttribute("buildingList", buildingList);
+//        RequestDispatcher dispatcher = request.getRequestDispatcher("ShowBuilding.jsp");
 //        dispatcher.forward(request, response);
 //    }
 //    private void DeleteBuildings(HttpServletRequest request, HttpServletResponse response, DomainFacade df) throws ServletException, IOException {

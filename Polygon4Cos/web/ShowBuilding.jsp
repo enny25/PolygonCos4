@@ -19,29 +19,7 @@
     <body>
         <h1>Show building</h1>
          <form action="Servlet">
-        <table>
-            <tr>
-                <th>Name</th>
-                <th>Address</th>
-                <th>Building ID</th>
-                <th>Size</th>
-            </tr>
-            <%
-                List<Building> buildings = (List<Building>) request.getAttribute("buildings");
-
-                for (int i = 0; i < buildings.size(); i++) {
-
-
-            %>
-            <tr>
-                <td><%= buildings.get(i).getName()%><td>
-                <td><%= buildings.get(i).getAddress()%></td>
-                <td><%= buildings.get(i).getBuildingID()%></td>
-                <td><%= buildings.get(i).getCustomerID()%></td>
-                <td><%=buildings.get(i).getSize()%></td>
-            </tr>
-            <%} //end of for loop%>
-        </table>
+        
             </form>
     </body>
 </html>

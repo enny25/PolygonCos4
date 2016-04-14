@@ -11,6 +11,7 @@ import domain.Building;
 import domain.Report;
 import domain.ReportConclusion;
 import java.sql.Connection;
+import java.util.List;
 
 /**
  *
@@ -63,17 +64,16 @@ public class DBFacade {
 
         return mapRep.createReportConclusion(rc, con);
     }
-    
-    
 
-//    public List<Building> showBuildings() {
-//        return map.showBuildings(con);
-//    }
 //
 //    public boolean deleteBuilding(Building b) {
 //        return map.deleteBuilding(b, con);
 //    }
 //    public boolean updateReport(Report report) {
 //        return mapRep.updateReport(con, report);
+//    }
+
+//    public List<Building> showBuilding() {
+//        return map.showBuilding(con);
 //    }
 }

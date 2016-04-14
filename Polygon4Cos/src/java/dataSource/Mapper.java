@@ -9,8 +9,11 @@ import domain.Building;
 import domain.Customer;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -26,7 +29,7 @@ public class Mapper {
             //== insert tuple
             statement.setString(1, b.getName());
             statement.setInt(2, b.getCustomerID());
-            statement.setString(3, b.getAddress());            
+            statement.setString(3, b.getAddress());
             statement.setDouble(4, b.getSize());
             rowsInserted = statement.executeUpdate();
 
@@ -56,58 +59,31 @@ public class Mapper {
         return rowsInserted == 1;
     }
 
-//     List<Building> showBuildings(Connection con) {
-//        return showBuildings(con);
+//    List<Building> showBuilding(Connection con) {
+//        return showBuilding(con);
 //    }
-//    private List<Building> showBuildings2(Connection con) {
-//        ArrayList<Building> buildings = new ArrayList<Building>();
+//    List<Building> showBuilding(Connection con) {
+//        ArrayList<Building> building = new ArrayList<Building>();
 //        String SQLString = "select * from building";
-//               
+//
 //        try (PreparedStatement statement = con.prepareStatement(SQLString)) {
 //            ResultSet rs = statement.executeQuery();
 //            while (rs.next()) {
-//                    Customer customer = new Customer(rs.getInt("Customer_id"));
-//                    Building building = new Building(
-//                    rs.getString("Building_name"),
-//                    rs.getString("Building_address"),
-//                    rs.getInt("Building_buildingID"), customer);
-//                    buildings.add(building);
-//                }
-//            
-//            return buildings;
+//                Customer customer = new Customer(rs.getInt("Customer_id"));
+//                Building building = new Building();
+//                rs.getString("Building_name");
+//                rs.getString("Building_address");
+//                rs.getInt("Building_buildingID"), customer;
+//                building.add(building);
+//            }
+//
+//            return building;
 //        } catch (Exception e) {
-//            System.out.println("Fail1 in OrderMapper - getOrder");
 //            System.out.println(e.getMessage());
 //            return null;
 //        }
 //    }
     /*
-    
-    public List<Building> showBuildings(Connection con) {
-        return showBuildings(con);
-    }
-        private List<Building> showBuildings(Connection con) {
-        ArrayList<Building> buildings = new ArrayList<Building>();
-        String SQLString = "select * from building";
-               
-        try (PreparedStatement statement = con.prepareStatement(SQLString)) {
-            ResultSet rs = statement.executeQuery();
-            while (rs.next()) {
-                    Customer c = new Customer(rs.getString("CustomerId"));
-                    Building p = new Building(
-                    rs.getString("Buildings_name"),
-                    rs.getString("Buildings_address"),
-                    rs.getInt("PlayerId"), c);
-                    buildings.add(b);
-                }
-            
-            return buildings;
-        } catch (Exception e) {
-            System.out.println("Fail1 in OrderMapper - getOrder");
-            System.out.println(e.getMessage());
-            return null;
-        }
-    }
 
         public int getBuildingID (String customer, int match, Connection con){
             String SQLString = "select Goal_id from Goal where Player_id =(select Player_id from player where Player_name = ?) and Match_id = ?";

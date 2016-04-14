@@ -76,10 +76,6 @@ public class DomainFacade {
         return newReportConclusion;
 
     }
-//     public List<Building> showBuildings(){
-//        List <Building> allBuildings = dbf.showBuildings();
-//        return allBuildings;
-//}
 
     public void createReport(Report r, RoomReport rr, ReportConclusion rc) {
         createReport(r);
@@ -87,5 +83,10 @@ public class DomainFacade {
         createReportConclusion(rc);
 
     }
+
+//    public List<Building> showBuilding() {
+//        List <Building> allBuildings = dbf.showBuilding();
+//        return allBuildings;
+//    }
 
 }
