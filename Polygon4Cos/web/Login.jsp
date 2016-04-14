@@ -14,7 +14,7 @@
     <body>
         <h1>Login</h1>
         <form action="Servlet">
-            <input type="hidden" name="action" value="createCustomer" />
+            <input type="hidden" name="action" value="addOrShow" />
             <br>Name:<input type="text" name="name" value="" /><br>
             <br>Password:<input type="password" name="password" value="" /><br>
             <br><input type="submit" name="Submit" value="Submit" /><br>

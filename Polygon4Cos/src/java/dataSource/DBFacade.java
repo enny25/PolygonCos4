@@ -22,6 +22,7 @@ public class DBFacade {
     private MapperReports mapRep;
     private Mapper map;
     private Connection con;
+    public static boolean test = false;
 
     // Singleton start
     private static DBFacade instance;
@@ -41,26 +42,41 @@ public class DBFacade {
     // Singleton end
 
     public boolean createBuilding(Building b) {
+        if(test){
+            return true;
+        }
 
         return map.createBuilding(b, con);
     }
 
     public boolean createCustomer(Customer c) {
+        if(test){
+            return true;
+        }
 
         return map.createCustomer(c, con);
     }
 
     public boolean createReport(Report r) {
+        if(test){
+            return true;
+        }
 
         return mapRep.createReport(r, con);
     }
 
     public boolean createRoomReport(RoomReport rr) {
+        if(test){
+            return true;
+        }
 
         return mapRep.createRoomReport(rr, con);
     }
 
     public boolean createReportConclusion(ReportConclusion rc) {
+        if(test){
+            return true;
+        }
 
         return mapRep.createReportConclusion(rc, con);
     }
