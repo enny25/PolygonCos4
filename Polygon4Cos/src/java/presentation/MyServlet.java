@@ -5,6 +5,7 @@
  */
 package presentation;
 
+import domain.Employee;
 import domain.ReportConclusion;
 import domain.RoomReport;
 import domain.Report;
@@ -48,18 +49,34 @@ public class MyServlet extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             switch (action) {
 
-                case "addBuilding":
-                    newBuilding(request, response, df);
-                    break;
-
                 case "register":
                     newCustomer(request, response, df);
+                    break;
+
+                case "addBuilding":
+                    newBuilding(request, response, df);
                     break;
 
                 case "uploadReport":
                     uploadReport(request, response, df);
                     break;
 
+                case "back":
+                    RequestDispatcher back = request.getRequestDispatcher("index.html");
+                    back.forward(request, response);
+                    break;
+
+                case "showCustomersBuilding":
+                    showCustomersBuilding(request, response, df);
+                    break;
+
+                case "deleteBuilding":
+                    deleteBuilding(request, response, df);
+                    break;
+
+                case "showAllBuildings":
+                    showAllBuildings(request, response, df);
+                    break;
             }
 
         }
@@ -69,7 +86,7 @@ public class MyServlet extends HttpServlet {
         String name = request.getParameter("name");
         String address = request.getParameter("address");
         int customerID = Integer.parseInt(request.getParameter("customerID"));
-        double size = Double.parseDouble(request.getParameter("size"));
+        int size = Integer.parseInt(request.getParameter("size"));
 
         Building building = df.createBuilding(name, address, customerID, size);
 
@@ -146,20 +163,33 @@ public class MyServlet extends HttpServlet {
         ReportConclusion rc = newReportConclusion(request, response);
 
         df.createReport(r, rr, rc);
-        
+
     }
 
-//    private void showBuilding(HttpServletRequest request, HttpServletResponse response, DomainFacade df) throws ServletException, IOException {
-//        List<Building> buildingList = df.showBuilding();
-//        request.setAttribute("buildingList", buildingList);
-//
-//        request.setAttribute("buildingList", buildingList);
-//        RequestDispatcher dispatcher = request.getRequestDispatcher("ShowBuilding.jsp");
-//        dispatcher.forward(request, response);
-//    }
-//    private void DeleteBuildings(HttpServletRequest request, HttpServletResponse response, DomainFacade df) throws ServletException, IOException {
-//        
-//    }
+    private void showCustomersBuilding(HttpServletRequest request, HttpServletResponse response, DomainFacade df) throws ServletException, IOException {
+        int buildingId = 1;
+        buildingId = Integer.parseInt(request.getParameter("buildingId"));
+        List<Building> building = df.getBuilding();
+        //can add an arraylist later
+        request.setAttribute("building", building);
+        RequestDispatcher rd = request.getRequestDispatcher("ShowBuilding.jsp");
+        rd.forward(request, response);
+
+    }
+
+    private void deleteBuilding(HttpServletRequest request, HttpServletResponse response, DomainFacade df) throws ServletException, IOException {
+
+    }
+
+    private void showAllBuildings(HttpServletRequest request, HttpServletResponse response, DomainFacade df) throws ServletException, IOException {
+        List<Building> buildingList = df.getBuilding();
+        request.setAttribute("buildingList", buildingList);
+
+        request.setAttribute("buildingList", buildingList);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("ShowBuilding.jsp");
+        dispatcher.forward(request, response);
+    }
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

@@ -5,6 +5,7 @@
  */
 package dataSource;
 
+import domain.Employee;
 import domain.RoomReport;
 import domain.Customer;
 import domain.Building;
@@ -19,8 +20,9 @@ import java.util.List;
  */
 public class DBFacade {
 
+    private MapperEmployee mapEmp;
     private MapperReports mapRep;
-    private Mapper map;
+    private MapperCustomer mapCus;
     private Connection con;
     public static boolean test = false;
 
@@ -28,8 +30,9 @@ public class DBFacade {
     private static DBFacade instance;
 
     private DBFacade() {
+        mapEmp = new MapperEmployee();
         mapRep = new MapperReports();
-        map = new Mapper();
+        mapCus = new MapperCustomer();
         con = DBConnector.getInstance().getConnection();
     }
 
@@ -46,7 +49,7 @@ public class DBFacade {
             return true;
         }
 
-        return map.createBuilding(b, con);
+        return mapCus.createBuilding(b, con);
     }
 
     public boolean createCustomer(Customer c) {
@@ -54,7 +57,7 @@ public class DBFacade {
             return true;
         }
 
-        return map.createCustomer(c, con);
+        return mapCus.createCustomer(c, con);
     }
 
     public boolean createReport(Report r) {
@@ -81,15 +84,22 @@ public class DBFacade {
         return mapRep.createReportConclusion(rc, con);
     }
 
-//
+    //
 //    public boolean deleteBuilding(Building b) {
-//        return map.deleteBuilding(b, con);
+//        return mapEmp.deleteBuilding(b, con);
 //    }
 //    public boolean updateReport(Report report) {
 //        return mapRep.updateReport(con, report);
 //    }
 
-//    public List<Building> showBuilding() {
-//        return map.showBuilding(con);
-//    }
+    
+    public List<Building> showAllBuildings() {
+        return mapEmp.showAllBuildings(con);
+    }
+
+    public List<Building> getBuilding() {
+        return mapCus.getBuilding(con);
+    }
+
+
 }

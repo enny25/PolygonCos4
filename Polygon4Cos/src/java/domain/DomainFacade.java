@@ -19,7 +19,6 @@ public class DomainFacade {
     private DBFacade dbf;
 
     private DomainFacade() {
-        newBuilding = null;
         dbf = DBFacade.getInstance();
     }
 
@@ -28,7 +27,7 @@ public class DomainFacade {
     }
     //----------------------
 
-    public Building createBuilding(String name, String address, int customerID, double size) {
+    public Building createBuilding(String name, String address, int customerID, int size) {
         newBuilding = new Building(name, address, customerID, size);
 
         boolean status = dbf.createBuilding(newBuilding);
@@ -84,9 +83,14 @@ public class DomainFacade {
 
     }
 
-//    public List<Building> showBuilding() {
-//        List <Building> allBuildings = dbf.showBuilding();
-//        return allBuildings;
-//    }
+    public List<Building> showAllBuildings() {
+        List<Building> allBuildings = dbf.showAllBuildings();
+        return allBuildings;
+    }
+
+    public List<Building> getBuilding() {
+        List<Building> getCustomersBuilding = dbf.getBuilding();
+        return getCustomersBuilding;
+    }
 
 }

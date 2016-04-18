@@ -14,10 +14,11 @@
     <body>
         <h1>Login</h1>
         <form action="Servlet">
-            <input type="hidden" name="action" value="addOrShow" />
+            <input type="hidden" name="action" onsubmit="validateBuildingName()" value="addOrShow" />
             <br>Name:<input type="text" name="name" value="" /><br>
             <br>Password:<input type="password" name="password" value="" /><br>
             <br><input type="submit" name="Submit" value="Submit" /><br>
+            <br><input type="submit" name="Submit" value="back" />
         </form>
     </body>
 </html>

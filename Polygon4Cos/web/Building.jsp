@@ -36,6 +36,8 @@
                 <td><%=buildings.get(i).getSize()%></td>
             </tr>
             <%} //end of for loop%>
+            
         </table>
+            <input type="hidden" name="whereTo" value="back" />
     </body>
 </html>

@@ -20,6 +20,7 @@
             <br>Customer ID:<input type="text" name="customerID" value="" /><br>
             <br>Building Size (m2):<input type="text" name="size" value="" /><br>
             <br><input type="submit" name="Submit" value="Submit" /><br>
+            <br><input type="submit" name="Submit" value="back" />
         </form>
     </body>
 </html>

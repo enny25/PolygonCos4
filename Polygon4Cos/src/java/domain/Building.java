@@ -15,9 +15,9 @@ public class Building {
     private String address;
     private int buildingID;
     private int customerID;
-    private double size;
+    private int size;
 
-    public Building(String name, String address, int customerID, double size) {
+    public Building(String name, String address, int customerID, int size) {
         this.name = name;
         this.address = address;
         this.customerID = customerID;
@@ -53,11 +53,11 @@ public class Building {
         return buildingID;
     }
 
-    public double getSize() {
+    public int getSize() {
         return size;
     }
 
-    public void setSize(double size) {
+    public void setSize(int size) {
         this.size = size;
     }
 
